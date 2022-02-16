@@ -1,7 +1,7 @@
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
-from aiogram.types import Message
+
 from config import token, admin_id
 
 bot = Bot(token)
@@ -12,10 +12,10 @@ async def on_startup(_):
 	await bot.send_message(admin_id, 'bot started...')
 
 
-# client
+# clien
 
 @dp.message_handler(commands=['start', 'help'])
-async def command_start(message : Message):
+async def command_start(message : types.Message):
 	try:
 		await bot.send_message(message.from_user.id, 'Приятного аппетита')
 		await message.delete()
@@ -24,15 +24,15 @@ async def command_start(message : Message):
 
 
 @dp.message_handler(commands=['Режим_работы'])
-async def time_work(message : Message):
+async def time_work(message : types.Message):
 	await message.reply('Пн - Пт с 9:00 до 18:00')
 
 
 @dp.message_handler(commands=['Расположение'])
-async def time_work(message : Message):
+async def time_work(message : types.Message):
 	await message.reply('Алмазарский район, ул. Карасарай, 314А')
 
-# client
+# admin
 
 
 #common
